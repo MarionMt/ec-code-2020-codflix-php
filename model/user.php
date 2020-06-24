@@ -8,7 +8,7 @@ class User
     protected $id;
     protected $email;
     protected $password;
-    protected $isActive;
+    protected $isConfirmed;
 
 
     public function __construct($user = null)
@@ -18,7 +18,7 @@ class User
             $this->setId(isset($user->id) ? $user->id : null);
             $this->setEmail($user->email);
             $this->setPassword($user->password, isset($user->password_confirm) ? $user->password_confirm : false);
-            $this->setIsActive(isset($user->isActive) ? $user->isActive : null);
+            $this->setisConfirmed(isset($user->isConfirmed) ? $user->isConfirmed : null);
         endif;
     }
 
@@ -55,11 +55,11 @@ class User
     }
 
     /**
-     * @param mixed $isActive
+     * @param mixed $isConfirmed
      */
-    public function setIsActive($isActive): void
+    public function setisConfirmed($isConfirmed): void
     {
-        $this->isActive = $isActive;
+        $this->isConfirmed = $isConfirmed;
     }
 
     /***************************
@@ -84,9 +84,9 @@ class User
     /**
      * @return mixed
      */
-    public function getIsActive()
+    public function getisConfirmed()
     {
-        return $this->isActive;
+        return $this->isConfirmed;
     }
 
 
@@ -167,7 +167,7 @@ class User
 
         $message = 'Bienvenue sur CodFlix,
         Veuillez cliquer sur le lien ci-dessous pour activer votre compte.
-        http://codflix.com/activation.php?log='.urlencode($addressee).'';
+        http://codflix.com/activation.php?log='.urlencode($addressee);
 
         mail($addressee, $subject, $message, $header);
     }
