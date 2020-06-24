@@ -22,3 +22,17 @@ function signupPage() {
 /***************************
 * ----- SIGNUP FUNCTION -----
 ***************************/
+
+function signup() {
+    $user = new User();
+    try {
+        $user->setEmail($_POST["email"]);
+        $user->setPassword(hash('sha256',$_POST["password"]), hash('sha256', $_POST["password_confirm"]));
+        $user->createUser();
+        $error_msg = "Compte crée avec succès";
+    }
+    catch (Exception $e) {
+        $error_msg = $e->getMessage();
+    } 
+        return $error_msg;
+}
