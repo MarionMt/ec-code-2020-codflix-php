@@ -20,21 +20,21 @@
     <div class="season">
         <?php 
             if($type === "serie"):
-                foreach ($allSeasons as $seasonsList):?>
+                foreach ($season as $seasonsList):?>
                    <br/><div class="season_list">Saison <?= $seasonsList["season"];
                    foreach ($episode as $episode):?>
-                    <div class="episode_list">Episode <?= $episode["episode"];?> </div>
+                    <div class="episode_list">
+                    <a class="item" href="index.php?media=<?= $media['id'].$season.$episode; ?>">
+                    Episode <?= $episode["episode"];?> </a>
                     <?php
-                    endforeach;?> </div>
+                    endforeach;?> </div></div>
                     <?php
                 endforeach;
             endif
         ?>
     </div>
 </div>
-<script type="text/javascript">
-spoiler = false
-</script>
+
 
 <?php $content = ob_get_clean(); ?>
 

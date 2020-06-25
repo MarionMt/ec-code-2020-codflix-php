@@ -194,6 +194,18 @@ class Media {
     return $req->fetchAll();
   }
 
+  //get duration of episode
+  public static function getEpisodeDuration( $season ) {
+    // Open database connection
+    $db = init_db();
+    $req = $db->prepare("SELECT duration FROM series WHERE serie_id = " . $season . "AND episode = ".$episode);
+    $req->execute();
+
+    // Close database connection
+    $db = null;
+    return $req->fetchAll();
+  }
+
   //get episode URL
   public static function getEpisodeUrl( $season, $episode ) {
     // Open database connection

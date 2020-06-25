@@ -21,10 +21,11 @@ function mediaPage() {
       $duration = date('H\hi', strtotime($movie["duration"]));
       
     else: 
-      $allSeasons = Media::getSeasonById($_GET['media']);;
+      $season = Media::getSeasonById($_GET['media']);;
       $episode = Media::getEpisodeById($_GET['media']);
       $episodeUrl = Media::getEpisodeUrl($_GET['season'], $_GET['episode']);
-      $duration = date('H\hi', strtotime($episode["duration"]));
+      $episodeDuration = Media::getEpisodeDuration($_GET['season'], $_GET['episode']);
+      $duration = date('H\hi', strtotime($episodeDuration["duration"]));
     endif;
     require('view/mediaDetailsView.php');
 
