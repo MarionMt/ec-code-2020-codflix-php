@@ -14,8 +14,10 @@
 </div>
 
 <div class="media-list">
-    <?php foreach( $medias as $media ): ?>
-        <a class="item" href="index.php?media=<?= $media['id']; ?>">
+    <?php 
+    foreach ($medias as $media): ?>
+        <a class="item" href="index.php?media=<?= $media['id']; ?>
+                                              <?= $media['type'] === 'serie' ? ' &season=1 &episode=1' : null ?>">
             <div class="video">
                 <div>
                     <iframe allowfullscreen="" frameborder="0"
@@ -23,10 +25,15 @@
                 </div>
             </div>
             <div class="title"><?= $media['title']; ?></div>
+            <div class="release">
+                <?php if (isset($_GET['title'])):
+                echo $release;
+                endif
+                ?>
+            </div>
         </a>
     <?php endforeach; ?>
 </div>
-
 
 <?php $content = ob_get_clean(); ?>
 

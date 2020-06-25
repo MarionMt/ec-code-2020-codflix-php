@@ -33,6 +33,14 @@
     padding: 8px 20px;
     text-align: center;
 }
+
+.media-list .item .release {
+    color: #fff;
+    font-weight: bold;
+
+    padding: 8px 20px;
+    text-align: center;
+}
 .media-list .item .title:after {
     content: "";
     display: block;
@@ -49,7 +57,6 @@
 .media-list .item .summary {
     color: #fff;
     padding: 8px 20px;
-
 }
 
 @media screen and (max-width: 768px) {

@@ -92,7 +92,6 @@ class Media {
 
     // Open database connection
     $db   = init_db();
-
     $req  = $db->prepare( "SELECT * FROM media WHERE title LIKE ".'"%' . $title . '%"' . " ORDER BY release_date DESC" );
     $req->execute();
 
@@ -149,7 +148,18 @@ class Media {
   * -------- GET SERIE ------
   ***************************/
 
-  public static function serieBySeason($season) {
+  public static function getSerieById($serie) {
+    // Open database connection
+    $db = init_db();
+    $req = $db->prepare("SELECT * FROM series WHERE serie_id = " . $serie);
+    $req->execute();
+
+    // Close database connection
+    $db = null;
+    return $req->fetchAll();
+  }
+
+  public static function getSerieBySeason($season) {
     // Open database connection
     $db = init_db();
     $req = $db->prepare("SELECT * FROM series WHERE season = " . $season);
@@ -161,10 +171,10 @@ class Media {
   }
 
   //get season
-  public static function seasonById( $id ) {
+  public static function getSeasonById( $season ) {
     // Open database connection
     $db = init_db();
-    $req = $db->prepare("SELECT * FROM series WHERE serie_id = " . $id . " GROUP BY season");
+    $req = $db->prepare("SELECT season FROM series WHERE serie_id = " . $season . " GROUP BY season");
     $req->execute();
 
     // Close database connection
@@ -173,10 +183,22 @@ class Media {
   }
 
   //get episode
+  public static function getEpisodeById( $season ) {
+    // Open database connection
+    $db = init_db();
+    $req = $db->prepare("SELECT episode FROM series WHERE serie_id = " . $season . " GROUP BY episode");
+    $req->execute();
+
+    // Close database connection
+    $db = null;
+    return $req->fetchAll();
+  }
+
+  //get episode URL
   public static function getEpisodeUrl( $season, $episode ) {
     // Open database connection
     $db = init_db();
-    $req = $db->prepare("SELECT * FROM series WHERE season = " . $season . " AND episode=" . $episode );
+    $req = $db->prepare("SELECT url_episode FROM series WHERE season = " . $season . " AND episode=" . $episode );
     $req->execute();
 
     // Close database connection

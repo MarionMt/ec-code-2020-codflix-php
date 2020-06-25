@@ -1,0 +1,45 @@
+.title {
+      color: #fff;
+      font-weight: bold;
+  
+      padding: 8px 20px;
+      text-align: center;
+  }
+
+  .type,  .release, .duration {
+        color: #fff;
+        text-align: center;
+  }
+
+  .summary {
+        color: #fff;
+        text-align: justify;
+        padding : 5px;
+  }
+
+  .video {
+        text-align: center;
+      width: 100%;
+  }
+
+  .item {
+      flex-basis: 24%;
+      margin: 4px;
+  
+      background: #1f1f1f;
+  
+      padding-bottom: 25px;
+  }
+  
+  .season {
+      color: #fff; 
+      text-align: center;  
+  }
+
+  .season_list {
+      font-size: large;
+  }
+
+  .episode_list {
+      font-size: medium;
+  }

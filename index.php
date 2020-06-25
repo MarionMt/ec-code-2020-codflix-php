@@ -32,6 +32,12 @@ if ( isset( $_GET['action'] ) ):
 
     break;
 
+    case 'media':
+
+      mediaPage();
+
+    break;
+
   endswitch;
 
 else:
